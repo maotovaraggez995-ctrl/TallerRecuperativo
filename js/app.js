@@ -1,15 +1,12 @@
-// js/app.js - VERSIÓN CORREGIDA
 import { obtenerFichas } from "./fichasADSO.js";
 import { obtenerAprendices } from "./aprendicesFicha.js";
 
-// --- Validar sesión ---
 const usuario = localStorage.getItem("usuario");
 if (!usuario) {
-  alert("⚠️ Debes iniciar sesión primero.");
+  alert(" Debes iniciar sesión primero.");
   window.location.href = "index.html";
 }
 
-// --- Elementos del DOM ---
 document.getElementById("nombreUsuario").textContent = usuario;
 const selectFicha = document.getElementById("selectFicha");
 const selectAprendiz = document.getElementById("selectAprendiz");
@@ -17,7 +14,6 @@ const infoAprendiz = document.getElementById("infoAprendiz");
 const resultados = document.getElementById("resultados");
 const btnSalir = document.getElementById("btnSalir");
 
-// --- Cargar fichas ---
 async function cargarFichas() {
   const fichas = await obtenerFichas();
 
@@ -35,7 +31,6 @@ async function cargarFichas() {
 }
 cargarFichas();
 
-// --- Cuando se selecciona una ficha ---
 selectFicha.addEventListener("change", async () => {
   selectAprendiz.innerHTML = "<option value=''>Seleccione aprendiz...</option>";
   resultados.innerHTML = "";
@@ -69,7 +64,6 @@ selectFicha.addEventListener("change", async () => {
 
   const aprendices = Object.values(agrupado);
 
-  // ✅ Mostrar número de documento en el selector
   aprendices.forEach(a => {
     const option = document.createElement("option");
     option.value = a.documento;
@@ -99,7 +93,6 @@ selectAprendiz.addEventListener("change", () => {
     if (juicio === "APROBADO") aprobados++;
     else porEvaluar++;
 
-    // ✅ CORREGIDO: Campos exactos según la API
     const instructor = r["Funcionario que registro el juicio evaluativo"]?.trim() || "-";
     const fecha = r["Fecha y Hora del Juicio Evaluativo"]?.trim() || "-";
 
@@ -117,13 +110,12 @@ selectAprendiz.addEventListener("change", () => {
   infoAprendiz.innerHTML = `
     <h3>${aprendiz.nombre} ${aprendiz.apellidos}</h3>
     <p>Documento: <strong>${aprendiz.documento}</strong></p>
-    <p>🟢 Aprobados: <strong>${aprobados}</strong> | ⚪ Por Evaluar: <strong>${porEvaluar}</strong></p>
+    <p> Aprobados: <strong>${aprobados}</strong> |  Por Evaluar: <strong>${porEvaluar}</strong></p>
   `;
 
   resultados.innerHTML = htmlResultados;
 });
 
-// --- Botón salir ---
 btnSalir.addEventListener("click", () => {
   localStorage.clear();
   window.location.href = "index.html";

@@ -43,7 +43,7 @@ selectFicha.addEventListener("change", async () => {
   const registros = data.aprendices || [];
 
   if (registros.length === 0) {
-    alert("⚠️ No se encontraron registros de aprendices en esta ficha.");
+    alert("No se encontraron registros de aprendices en esta ficha.");
     return;
   }
 
@@ -71,11 +71,10 @@ selectFicha.addEventListener("change", async () => {
     selectAprendiz.appendChild(option);
   });
 
-  // Guardar en dataset para uso posterior
+
   selectAprendiz.dataset.aprendices = JSON.stringify(aprendices);
 });
 
-// --- Cuando se selecciona un aprendiz ---
 selectAprendiz.addEventListener("change", () => {
   const aprendices = JSON.parse(selectAprendiz.dataset.aprendices || "[]");
   const aprendiz = aprendices.find(a => a.documento == selectAprendiz.value);

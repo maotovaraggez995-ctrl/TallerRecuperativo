@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juicios Evaluativos</title>
+  <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+  <header>
+    <h2>Juicios Evaluativos</h2>
+    <span>👤 <strong id="nombreUsuario"></strong></span>
+    <button id="btnSalir">Salir</button>
+  </header>
+
+  <main>
+    <div class="selectors">
+      <select id="selectFicha"><option value="">Seleccione ficha...</option></select>
+      <select id="selectAprendiz"><option value="">Seleccione aprendiz...</option></select>
+    </div>
+
+    <section id="infoAprendiz"></section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Competencia</th>
+          <th>Resultado de Aprendizaje</th>
+          <th>Juicio</th>
+          <th>Fecha</th>
+          <th>Instructor</th>
+        </tr>
+      </thead>
+      <tbody id="resultados"></tbody>
+    </table>
+  </main>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

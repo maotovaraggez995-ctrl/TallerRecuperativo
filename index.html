@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ingreso - Juicios Evaluativos</title>
+  <link rel="stylesheet" href="./css/app.css">
+</head>
+<body class="login">
+  <main class="login-card">
+    <h1>Ingreso al Sistema</h1>
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="contrasena" placeholder="Contraseña">
+    <button id="btnIngresar">Ingresar</button>
+  </main>
+
+  <script type="module">
+    import { validarIngreso } from "./js/validarIngreso.js";
+    document.getElementById("btnIngresar").addEventListener("click", () => {
+      validarIngreso(
+        document.getElementById("usuario").value,
+        document.getElementById("contrasena").value
+      );
+    });
+  </script>
+</body>
+</html>
